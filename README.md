@@ -89,25 +89,32 @@ Any client can verify the commitment matches the reveal. Mismatch is
 public, signed proof of cheating, published as a dispute event (kind
 1659). Dealer's reputation badges burn; any posted bond can be slashed.
 
-**Above the floor (dealers compete by offering more):**
-- **TEE-attested dealing** — dealer runs in AWS Nitro Enclave / Intel
-  SGX-TDX; the operator can't see the deck even if they want to;
-  attestation is a verifiable cryptographic claim
-- **FROSTR threshold** — a t-of-n threshold signing group jointly
-  deals; no single operator sees the deck
-- **Bonded stakes** — dealer locks Lightning bond that's slashed on
-  proven misbehavior
-- **Reproducible build attestations** — operator publishes a build
-  hash that matches a published-source git tag
+**v1 stops at the floor.** Single-operator dealer + commit-reveal +
+reputation. That's it. Higher tiers are reserved namespace in the
+protocol but explicitly *not* shipping in v1 — they're roadmap, not
+promises.
 
-A high-stakes table picks a TEE-attested or FROSTR-backed dealer with
-a posted bond. A friendly $0-stakes table picks an open-source dealer
-some kid is running for fun. Same harness, same protocol, different
-trust tiers — players choose.
+**Roadmap tiers (post-v1, in rough order of approachability):**
+- **TEE-attested dealing** — dealer runs in AWS Nitro Enclave / Intel
+  SGX-TDX; the operator can't see the deck even with full machine
+  access; attestation is a verifiable cryptographic claim. Cleanest
+  v2 path.
+- **Bonded stakes** — dealer locks a Lightning bond that's slashed on
+  proven misbehavior; commit-reveal stays the verification layer
+- **Reproducible build attestation** — operator publishes a build
+  hash matching a public source-tree git tag
+- **FROSTR threshold** — t-of-n threshold signing group jointly does
+  the deal; no single operator sees the deck. Note: requires
+  *genuinely independent* signer operators (if one party runs all N
+  signers, they hold all shares and the trust claim is illusory).
+  More a coordination/recruiting problem than an engineering one.
+
+In v1, friendly $0-stakes tables work; real-stakes tables wait for
+higher tiers to land.
 
 ## Key documents
 
-- **`docs/DESIGN.md`** — the why behind the architecture. Tradeoffs
+- **`docs/ARCHITECTURE.md`** — the why behind the architecture. Tradeoffs
   explored and rejected. Open questions. Read this if you want to
   understand the reasoning.
 - **`docs/nip-101p-draft.md`** — the protocol draft. Event kinds, tag
@@ -159,7 +166,7 @@ up for revision.
 ## How to give feedback
 
 - Open a GitHub issue with your concern / suggestion / pointer
-- Or comment inline on `docs/DESIGN.md` or `docs/nip-101p-draft.md` via
+- Or comment inline on `docs/ARCHITECTURE.md` or `docs/nip-101p-draft.md` via
   PR
 - Or reach out to Daniel directly on Nostr or via email if you'd
   rather — see contact in `CONTRIBUTING.md`
@@ -175,7 +182,7 @@ up for revision.
 
 ## Status
 
-- [x] Brainstorm / design (this round; see `docs/DESIGN.md`)
+- [x] Brainstorm / design (this round; see `docs/ARCHITECTURE.md`)
 - [x] Protocol draft (this round; see `docs/nip-101p-draft.md`)
 - [ ] Feedback round with developer friends ← *we are here*
 - [ ] Reference dealer implementation (Node service, open source)

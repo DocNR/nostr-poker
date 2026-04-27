@@ -19,25 +19,25 @@
     </p>
     <ul class="text-sm space-y-1 list-disc pl-4 text-muted">
       <li>
-        <a class="text-accent underline" href="https://github.com/danielwyler/nostr-poker/blob/main/README.md">
+        <a class="text-accent underline" href="https://github.com/DocNR/nostr-poker/blob/main/README.md">
           README
         </a>
         — overview, architecture, what we want feedback on
       </li>
       <li>
-        <a class="text-accent underline" href="https://github.com/danielwyler/nostr-poker/blob/main/docs/DESIGN.md">
-          DESIGN.md
+        <a class="text-accent underline" href="https://github.com/DocNR/nostr-poker/blob/main/docs/ARCHITECTURE.md">
+          ARCHITECTURE.md
         </a>
         — architectural rationale, tradeoffs, open questions
       </li>
       <li>
-        <a class="text-accent underline" href="https://github.com/danielwyler/nostr-poker/blob/main/docs/nip-101p-draft.md">
+        <a class="text-accent underline" href="https://github.com/DocNR/nostr-poker/blob/main/docs/nip-101p-draft.md">
           NIP-101p draft
         </a>
         — protocol spec, event kinds, hand-flow state machine
       </li>
       <li>
-        <a class="text-accent underline" href="https://github.com/danielwyler/nostr-poker/blob/main/CONTRIBUTING.md">
+        <a class="text-accent underline" href="https://github.com/DocNR/nostr-poker/blob/main/CONTRIBUTING.md">
           CONTRIBUTING
         </a>
         — how to give feedback

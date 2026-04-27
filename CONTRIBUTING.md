@@ -23,7 +23,7 @@ pointer to prior art. Tag with one of:
 
 ### 2. Pull requests on the docs
 
-If you have a concrete proposed change to `docs/DESIGN.md` or
+If you have a concrete proposed change to `docs/ARCHITECTURE.md` or
 `docs/nip-101p-draft.md`, open a PR. Even partial drafts are welcome —
 we'll iterate.
 
@@ -41,7 +41,7 @@ to push on are:
 
 1. **`README.md` § "What we want feedback on"** — the explicit list of
    open questions
-2. **`docs/DESIGN.md` § "Open questions"** — the longer list of
+2. **`docs/ARCHITECTURE.md` § "Open questions"** — the longer list of
    architectural and protocol uncertainties
 3. **`docs/nip-101p-draft.md` § "Open questions for the spec"** — the
    protocol-level details we haven't pinned down

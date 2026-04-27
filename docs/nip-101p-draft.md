@@ -364,15 +364,23 @@ this NIP does not mandate any specific reputation aggregator.
 
 ## Trust tiers (above the floor)
 
-The protocol's floor is commit-reveal. Dealers MAY claim and
-demonstrate stronger guarantees:
+The protocol's floor is commit-reveal. **v1-conformant dealers MUST
+claim `commit-reveal` in their `trust` tag.** All other tier values
+listed below are *reserved namespace* in the protocol — they describe
+guarantees a dealer might offer in future versions of this NIP, but
+v1 does not require any client or dealer to implement them.
+
+Reserved tier values:
 
 - `tee:nitro` — running inside an AWS Nitro Enclave; `attestation` tag
   points at a published attestation document the harness verifies
 - `tee:sgx` — Intel SGX/TDX; same shape
-- `frostr:t-of-n` — a FROSTR threshold signing group of `n` independent
+- `frostr:t-of-n` — a FROSTR threshold signing group of `n` *independent*
   signers, `t` required to deal; signing group's attestation in the
-  `attestation` tag
+  `attestation` tag. The threshold guarantee only holds if the N
+  signers are operated by N distinct parties — a single operator
+  running all N signers holds all the key shares and the trust claim
+  collapses.
 - `bonded:<sats>` — Lightning bond posted to a public escrow contract
   (a HOLD invoice or similar) that can be slashed via published proof
   of misbehavior

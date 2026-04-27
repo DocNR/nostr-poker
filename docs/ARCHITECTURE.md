@@ -154,25 +154,41 @@ It does not rule out:
   before showdown (the dealer sees the deck in plaintext during shuffle
   in this baseline tier)
 
-The defenses for those attacks are above the floor: TEE attestation,
-FROSTR threshold dealing, bonded stakes, and reputation. Players
-choose their tier per game.
+The defenses for those attacks live in higher trust tiers (TEE
+attestation, FROSTR threshold dealing, bonded stakes) — discussed in
+the next section. **In v1, defense reduces to reputation alone**: a
+dealer caught cheating loses badges, gets labeled, and stops getting
+chosen. That's it. Dealers wanting to credibly serve real-stakes games
+will need a higher-tier deployment, which is post-v1 work.
 
-### Above the floor
+### Above the floor — *post-v1 roadmap, not v1*
 
-Higher-tier dealers advertise stronger guarantees in their dealer
-profile (`trust` tag values):
+**v1 ships commit-reveal only.** A single-operator dealer with the
+commit-reveal floor is the entire trust model on day one. Higher tiers
+are reserved namespace in the protocol, not promises for the first
+release. The `trust` tag values listed below are *roadmap*, evaluated
+as separate work after v1 lands.
+
+Tiers we expect to explore later, in rough order of approachability:
 
 - `tee:nitro` — runs in AWS Nitro Enclave; operator can't see the deck
-  even if they want to
+  even if they want to. Single-operator deployable, hardware-rooted
+  trust. Probably the cleanest v2 upgrade path.
 - `tee:sgx` — Intel SGX/TDX equivalent
-- `frostr:t-of-n` — a t-of-n threshold signing group jointly does the
-  deal; collusion requires t parties
-- `bonded:<sats>` — Lightning bond locked to public escrow; slashed on
-  proven misbehavior
+- `bonded:<sats>` — Lightning bond locked to public escrow; slashed
+  on proven misbehavior. Adds a financial-incentive layer to the
+  commit-reveal floor.
 - `source:reproducible` — open-source, with reproducible build proof
+- `frostr:t-of-n` — t-of-n threshold signing group jointly does the
+  deal; no single operator sees the deck. **Important caveat:** the
+  trust claim only holds if the N signers are run by *N independent
+  parties*. If one operator runs all N signers, they hold all the key
+  shares and the threshold guarantee is illusory. So FROSTR-as-dealer
+  is a coordination problem (recruiting independent operators) on top
+  of an engineering problem. Realistic but later.
 
-The harness shows these claims. Players filter and choose.
+The harness will show whichever claims are present and let players
+filter — but in v1 the only claim available is `commit-reveal`.
 
 ### Reputation
 
