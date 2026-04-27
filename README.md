@@ -58,7 +58,7 @@ Three deliverables, all open:
       ┌────────────────────┐         ┌──────────────────┐
       │  Nostr relays      │         │ Player's own     │
       │  (table state,     │         │ Lightning wallet │
-      │   action stream,   │         │ (Mutiny, Alby,   │
+      │   action stream,   │         │ (Breez, Alby,    │
       │   reputation)      │         │  Phoenix, ...)   │
       └────────┬───────────┘         └──────────────────┘
                │
